@@ -1,8 +1,7 @@
 
 Wrap CSS-Class "nb-gallery" around <A><IMG></A>-Tag like in this examples:
 
-**    
-// Ignore the images
+**
 
     <section class='nb-gallery'>
         <h2>Gallerie 1</h2>
