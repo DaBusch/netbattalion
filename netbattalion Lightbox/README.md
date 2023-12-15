@@ -1,7 +1,8 @@
 
 Wrap CSS-Class "nb-gallery" around <A><IMG></A>-Tag like in this examples:
 
-**<section class='nb-gallery'>
+**
+<section class='nb-gallery'>
         <h2>Gallerie 1</h2>
         <div>
             <a href='/images/image-1' title='Description'>
