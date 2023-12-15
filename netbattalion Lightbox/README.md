@@ -1,5 +1,5 @@
 
-Wrap CSS-Class "nb-gallery" around <A><IMG></A>-Tag like in this examples:
+Wrap CSS-Class "nb-gallery" around A-IMG-/A-Tag like in this examples:
 
 **
 
