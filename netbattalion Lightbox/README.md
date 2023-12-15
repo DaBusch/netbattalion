@@ -1,7 +1,37 @@
 
 Wrap CSS-Class "nb-gallery" around <A><IMG></A>-Tag like in this examples:
 
-**
+**    
+// Ignore the images
+
+    <section class='nb-gallery'>
+        <h2>Gallerie 1</h2>
+        <div>
+            <a href='/images/image-1' title='Description'>
+                <img src='/images/image-1-thumb.jpg' title='Description' alt='Description'>
+            </a>
+        </div>
+        <div>
+            <a href='/images/image-2.jpg' title='Description'>
+                <img src='/images/image-2-thumb.jpg' title='Description' alt='Description'>
+            </a>
+        </div>
+    </section>
+        
+    <section class='nb-gallery'>
+        <h2>Gallerie 1</h2>
+        <div>
+            <a href='/images/image-1' title='Description'>
+                <img src='/images/image-1-thumb.jpg' title='Description' alt='Description'>
+            </a>
+        </div>
+        <div>
+            <a href='/images/image-2.jpg' title='Description'>
+                <img src='/images/image-2-thumb.jpg' title='Description' alt='Description'>
+            </a>
+        </div>
+    </section>
+        
     <h2>Gallerie 2</h2>
     <div class='nb-gallery'>
         <div>
