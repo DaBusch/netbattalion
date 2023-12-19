@@ -11,11 +11,11 @@ https://www.netbattalion.de
 
 ### netbattalion Crypto
 
-Some javascript funtions to encrypt plain text with AES.
+Some javascript funtions to encrypt plain text with AES. 1.05 kB
 
 ### netbattalion Lightbox
 
-A javascript website lightbox. It works out of the box. There's no need for configuration.
+A javascript website lightbox. It works out of the box. There's no need for configuration. 3.11 kB.
 
 ### netbatJS
 
