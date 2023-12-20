@@ -21,4 +21,4 @@ Some javascript funtions to encrypt and decrypt plain text with AES-GCM. 1.05 kB
 
 ### netbattalion Lightbox
 
-A javascript website lightbox. It works out of the box. There's no need for configuration. 3.11 kB.
+A javascript website lightbox. It works out of the box. There's no need for configuration. 3.11 kB Javascript and CSS.
