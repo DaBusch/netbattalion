@@ -7,8 +7,8 @@ Just 493 Bytes!!! (This README has 832 Bytes)
 It works, but is maybe not yet finished.
 
 Directives:
-- "data-data" for object of variables and functions
-- "data-init" for executing functions on page loaded
+- "data-data" for object of variables and functions. Has to be in BODY-Tag.
+- "data-init" for executing functions on page loaded. Has to be in BODY-Tag.
 - "data-bind" + "data-set" for data binding. "data-set" is executed when "data-bind"-variable has changed. Use "ref" to set and call bound variable e.g. "ref.variable".
 
 Notice:
