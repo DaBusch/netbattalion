@@ -15,7 +15,7 @@ A minimalistic javascript framework to put all your javascript functions into yo
 
 ### netbattalion Crypto
 
-Some javascript funtions to encrypt plain text with AES. 1.05 kB
+Some javascript funtions to encrypt and decrypt plain text with AES-GCM. 1.05 kB
 
 ### netbattalion Lightbox
 
