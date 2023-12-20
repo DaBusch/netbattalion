@@ -100,14 +100,14 @@ I didn't yet get typechecking on numbers to work.
     <span id="one" data-bind="numberOne" data-set="self.innerHTML=Number(ref.numberOne)">1</span> + 
     <span id="two" data-bind="numberTwo" data-set="self.innerHTML=Number(ref.numberTwo)">3</span> = 
     <span id="result" data-bind="result" data-set="self.innerHTML=Number(ref.numberOne) +Number( ref.numberTwo)">0</span>
-    <br/>
+    
     <label for="one">First number</label>
     <input name="one" type="text"
         oninput="
             ref.numberOne=this.value
             ref.result=''
         "
-    /><br/>
+    />
     <label for="two">Second number</label>
     <input name="two" type="text"
         oninput="
