@@ -9,7 +9,7 @@ It works, but is maybe not yet finished.
 Directives:
 - "data-data" for object of variables and functions
 - "data-init" for executing functions on page loaded
-- "data-bind" + "data-set" for data binding (use "ref" to set and call bound variable e.g. "ref.variable")
+- "data-bind" + "data-set" for data binding. "data-set" is executed when "data-bind"-variable has changed. Use "ref" to set and call bound variable e.g. "ref.variable".
 
 Notice:
 - Bindings need an Element-Id.
