@@ -2,7 +2,7 @@
 
 A minimalistic javascript framework to put all your javascript functions into your HTML-dom attributes. Inspired by Alpine JS and HTMX.
 
-Just 541 Bytes!!!
+Just 541 Bytes!!! (This Text has 657 Bytes)
 
 It works, but is maybe not yet finished.
 
