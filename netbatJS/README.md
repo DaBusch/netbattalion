@@ -9,12 +9,11 @@ It works, but is maybe not yet finished.
 Directives:
 - "data-data" for object of variables and functions. Has to be in BODY-Tag.
 - "data-init" for executing functions on page loaded. Has to be in BODY-Tag.
-- "data-bind" + "data-set" for data binding. "data-set" is executed when "data-bind"-variable has changed. Use "ref" to set and call bound variable e.g. "ref.variable".
+- "data-bind" + "data-set" for data binding. "data-set" is executed when "data-bind"-variable has changed. Use "ref" to set and call bound variable e.g. "ref.variable". Dom-Element needs an ID
 
 Notice:
-- Bindings need an Element-Id.
 - For events use standard-attributes e.g. "onclick", "oninput".
-- Because of useage of "eval()" NEVER parse user input or asyncronously loaded code from untrusted databases.
+- Because of useage of "eval()" NEVER parse user input or asyncronously loaded code from untrusted sources.
 
 To inspect usage go to file: https://github.com/DaBusch/netbattalion/blob/main/netbatJS/netbattalionJS.html
 
