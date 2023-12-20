@@ -11,7 +11,7 @@ https://www.netbattalion.de
 
 ### netbatJS
 
-A minimalistic javascript framework to put all your javascript functions into your HTML-dom attributes. Inspired by AlpineJS and HTMX. Just 510 Bytes!!! (This README has 551 Bytes)
+A minimalistic javascript framework to put all your javascript functions into your HTML-dom attributes. Inspired by AlpineJS and HTMX. Just 493 Bytes!!! (This README has 551 Bytes)
 
 ### netbattalion Crypto
 
