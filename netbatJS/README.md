@@ -14,10 +14,11 @@ Directives:
 Notice:
 - Bindings need an Element-Id.
 - For events use standard-attributes e.g. "onclick", "oninput".
+- Because of useage of "eval()" NEVER parse user input or asyncronously loaded code from untrusted databases.
 
 To inspect usage go to file: https://github.com/DaBusch/netbattalion/blob/main/netbatJS/netbattalionJS.html
 
 Problems to solve:
 - Bindings still need an Id
 - I didn't yet get typechecking on numbers to work.
-- Maybe DANGEROUS: Makes use of eval() and Function()
+- Maybe DANGEROUS: Makes use of "eval()"
