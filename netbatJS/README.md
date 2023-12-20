@@ -11,8 +11,12 @@ Directives:
 - "data-init" for executing functions on page loaded
 - "data-bind" + "data-set" for data binding (use "ref" to set and call bound variable e.g. "ref.variable")
 
-For events use standard-attributes e.g. "onclick", "oninput".
+- Bindings need an Element-Id.
+- For events use standard-attributes e.g. "onclick", "oninput".
 
 To inspect usage go to file: https://github.com/DaBusch/netbattalion/blob/main/netbatJS/netbattalionJS.html
 
-I didn't yet get typechecking on numbers to work.
+Problems to solve:
+
+- Bindings still need an Id
+- I didn't yet get typechecking on numbers to work.
