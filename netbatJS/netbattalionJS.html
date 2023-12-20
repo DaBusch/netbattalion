@@ -16,15 +16,15 @@
 </head>
 <body
     data-data="{
-        a:()=>{return 0 < 1 ? true : false},
+        a:()=>{ return 0 < 1 ? true : false },
         open: false,
         color: 'yellow',
         color2: 'orange',
-        func: (e)=>{e.innerHTML='Your clicked me'; console.log('Do other stuff')}
+        func: ( e ) => { e .innerHTML = 'Your clicked me'; console .log ( 'Do other stuff' ) }
     }"
 
     data-init="{
-        doSomethingOnPageLoad:()=>document.querySelector('#pageLoad').innerHTML = 'This was set on pageload.'
+        doSomethingOnPageLoad: () => document .querySelector ( '#pageLoad' ) .innerHTML = 'This was set on pageload.'
     }"
 >
 
@@ -34,7 +34,7 @@
         data-bind="myVar"
         data-set="
             self.innerHTML = ref.myVar
-            console.log
+            console.log(ref.myVar)
         "
     ></div>
 
@@ -82,6 +82,28 @@
                 ref.writtenText=this.value
             "
         >
+</div>
+
+<div>
+    <span id="one" data-bind="numberOne" data-set="self.innerHTML=Number(ref.numberOne)">1</span> + 
+    <span id="two" data-bind="numberTwo" data-set="self.innerHTML=Number(ref.numberTwo)">3</span> = 
+    <span id="result" data-bind="result" data-set="self.innerHTML=Number(ref.numberOne) +Number( ref.numberTwo)">0</span>
+    <br>
+    <label for="one">First number</label>
+    <input name="one" type="text"
+        oninput="
+            ref.numberOne=this.value
+            ref.result=''
+        "
+    ><br>
+    <label for="two">Second number</label>
+    <input name="two" type="text"
+        oninput="
+            ref.numberTwo=Number(this.value)
+            console.log(typeof(Number(this.value)))
+            ref.result=''
+        "
+    >
 </div>
         
     <script src="netbattalionJS.js"></script>
