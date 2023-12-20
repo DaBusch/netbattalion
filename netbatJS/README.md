@@ -1,8 +1,8 @@
 # netbatJS
 
-A minimalistic javascript framework to put all your javascript functions into your HTML-dom attributes. Inspired by Alpine JS and HTMX.
+A minimalistic javascript framework to put all your javascript code into your HTML-dom attributes. Inspired by Alpine JS and HTMX.
 
-Just 510 Bytes!!! (This Text has 683 Bytes)
+Just 510 Bytes!!! (This Text has 678 Bytes)
 
 It works, but is maybe not yet finished.
 
