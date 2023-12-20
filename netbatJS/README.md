@@ -20,3 +20,4 @@ To inspect usage go to file: https://github.com/DaBusch/netbattalion/blob/main/n
 Problems to solve:
 - Bindings still need an Id
 - I didn't yet get typechecking on numbers to work.
+- Maybe DANGEROUS: Makes use of eval() and Function()
