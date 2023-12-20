@@ -9,7 +9,7 @@ For events use standard-attributes e.g. "onclick", "oninput".
 
 I didn't yet get typechecking on numbers to work.
 
-
+**
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,14 +100,14 @@ I didn't yet get typechecking on numbers to work.
     <span id="one" data-bind="numberOne" data-set="self.innerHTML=Number(ref.numberOne)">1</span> + 
     <span id="two" data-bind="numberTwo" data-set="self.innerHTML=Number(ref.numberTwo)">3</span> = 
     <span id="result" data-bind="result" data-set="self.innerHTML=Number(ref.numberOne) +Number( ref.numberTwo)">0</span>
-    <br>
+    <br/>
     <label for="one">First number</label>
     <input name="one" type="text"
         oninput="
             ref.numberOne=this.value
             ref.result=''
         "
-    ><br>
+    /><br/>
     <label for="two">Second number</label>
     <input name="two" type="text"
         oninput="
@@ -115,9 +115,10 @@ I didn't yet get typechecking on numbers to work.
             console.log(typeof(Number(this.value)))
             ref.result=''
         "
-    >
+    />
 </div>
         
     <script src="netbattalionJS.js"></script>
 </body>
 </html>
+**
