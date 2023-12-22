@@ -5,106 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        div {margin: 1rem;}
+        * {margin: 1rem; padding: 1rem;}
+        body{height: 100%;}
+        div {margin: 1rem; display: block;}
         .red {
             background-color: red;
         }
         .green {
             background-color: green;
         }
+        button { width: 90%;}
     </style>
+    <script>
+        const data = {
+            slf : function(){return this},
+            properties: {
+                open: false,
+                color: ['yellow','orange'],
+            },
+            methods: {
+                methA: function(e){ console.log('qqqqqqqqqqqqqqqqqq',e,this)},
+                myFetch: ( e, id ) => {var html =''; fetch('https://dummyjson.com/products/1') .then(res => res.json()) .then(json => 
+                        {   for (v in json){
+                                html += `<p>${v}: ${json[v]}</p>`
+                            }
+                            html = `<div style='background: #aaa'>${html}</div>`
+                            id ? document .getElementById (id) .innerHTML = html : e .target .innerHTML = html
+                        }
+                    ) },
+                setHTML: (d)=>d.innerHTML = '....data.methods.myFetch',
+            },
+            init: ()=>{
+                data.methods.myFetch(event,'pageLoad')
+                data.methods.setHTML(title)
+            }
+        }
+    </script>
 </head>
-<body
-    data-data="{
-        a:()=>{ return 0 < 1 ? true : false },
-        open: false,
-        color: 'yellow',
-        color2: 'orange',
-        func: ( e ) => { e .innerHTML = 'Your clicked me'; console .log ( 'Do other stuff' ) }
-    }"
-
-    data-init="{
-        doSomethingOnPageLoad: () => document .querySelector ( '#pageLoad' ) .innerHTML = 'This was set on pageload.'
-    }"
->
-
+<body>
+    <h1 id="title"></h1>
     <div id="pageLoad"></div>
 
-    <div id="bindtoText"
-        data-bind="myVar"
-        data-set="
-            self.innerHTML = ref.myVar
-            console.log(ref.myVar)
-        "
+    <div
+        data-bind="myVar,green"
+        data-set="setHTML"
     ></div>
 
-    <div id="bindToClass"
-        data-bind="myVar" class="red"
+    <div
+        data-bind="myVar,green" class="red"
         data-set="
-            self.classList.remove(...self.classList)
-            self.classList.add(ref.myVar)
-        "
-
-    >green</div>
+            self.classList.remove(...self.classList);self.classList.add(ref.myVar)
+            self.innerHTML = ref.myVar"
+    ></div>    
 
     <button
         onclick="
             open = !open
             ref.myVar == 'green' ? ref.myVar = 'red' : ref.myVar = 'green'
         "
-    >Change Color</button>
+        >Toggle class</button>
     
-    <button id="eins" class="red"
-        data-bind="bool"
+    <button class="red"
+        data-bind="bool,false"
         onclick="
             ref.bool = !ref.bool
-            ref.bool ? this.style.backgroundColor = color2 : this.style.backgroundColor = color
             console.log(ref.bool)
-            self.innerHTML = ref.bool
+            ref.bool ? this.style.backgroundColor = color[1] : this.style.backgroundColor = color[0]
+            self.innerHTML = typeof(ref.bool)
         "
-    >false</button>
+        data-set="            
+            ref.bool ? self.style.backgroundColor = color[1] : self.style.backgroundColor = color[0]
+            self.innerHTML = ref.bool"
+    >Test</button>
     
-    <div id="func"
-        onclick="
-            func(this)
-        "
-    >Click Me</div>
+    <div
+        onclick="myFetch(event)"
+        >
+        <button>Fetch Data from the Internet</button>
+    </div>
+
+    <div
+        data-bind="writtenText"
+        data-set="self.innerHTML=ref.writtenText"
+    >Updated on input</div>
+
+    <input type="text" placeholder="Writesomething" oninput="ref.writtenText=this.value">
 
     <div>
-        <p id="test3"
-            data-bind="writtenText"
-            data-set="self.innerHTML=ref.writtenText"
-
-        >Updated on input</p>
-
-        <input type="text" placeholder="Writesomething"
+        <span data-bind="numberOne,5" data-set="self .innerHTML = ref .numberOne; console.log(event)">1</span> + 
+        <span data-bind="numberTwo,7" data-set="self .innerHTML = ref .numberTwo">3</span> = 
+        <span data-bind="result,0" data-set="self .innerHTML = Number ( ref .numberOne ) / ref .numberTwo">0</span>
+        <br>
+        <label for="one">First number</label>
+        <input name="one" type="number"
             oninput="
-                ref.writtenText=this.value
+                ref.numberOne=this.value
+                ref.result=''
+            "
+        ><br>
+        <label for="two">Second number</label>
+        <input name="two" type="number"
+            onkeydown="
+            //  to avoid 'e' and 'E'
+            //  https://stackoverflow.com/questions/31706611/why-does-the-html-input-with-type-number-allow-the-letter-e-to-be-entered-in
+                var keyCode = ('which' in event) ? event.which : event.keyCode;
+                return !(keyCode == 69 || keyCode == 101);"
+            oninput="
+                ref.numberTwo=this.value
+                ref.result=''
             "
         >
-</div>
-
-<div>
-    <span id="one" data-bind="numberOne" data-set="self .innerHTML = ref .numberOne">1</span> / 
-    <span id="two" data-bind="numberTwo" data-set="self .innerHTML = ref .numberTwo">3</span> = 
-    <span id="result" data-bind="result" data-set="self .innerHTML = Number(ref.numberOne) / Number(ref.numberTwo)">0</span>
-    <br>
-    <label for="one">First number</label>
-    <input name="one" type="number"
-        oninput="
-            ref.numberOne=this.value
-            ref.result=''
-        "
-    ><br>
-    <label for="two">Second number</label>
-    <input name="two" type="number"
-        oninput="
-            ref.numberTwo=this.value
-            ref.result=''
-        "
-    >
-</div>
-        
-    <script src="netbattalionJS.min.js"></script>
+    </div>
+    <script src="like-alpine.test.min.js"></script>
 </body>
 </html>
