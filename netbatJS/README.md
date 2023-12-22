@@ -2,14 +2,13 @@
 
 A minimalistic javascript framework to put all your javascript code into your HTML-dom attributes. Inspired by Alpine JS and HTMX.
 
-Just 478 Bytes!!! (This README has 919 Bytes)
+Just 412 Bytes!!! (This README has 919 Bytes)
 
 It works, but is maybe not yet finished.
 
 Directives:
-- "data-data" for object of variables and functions. Has to be in BODY-Tag.
-- "data-init" for executing functions on page loaded. Has to be in BODY-Tag.
-- "data-bind" + "data-set" for data binding. "data-set" is executed when "data-bind"-variable has changed. Use "ref" to set and call bound variable e.g. "ref.variable". Dom-Element currently needs an ID.
+- "data-bind" for data binding.
+- "data-set" is executed when "data-bind"-variable has changed. Use "ref" to set and call bound variable e.g. "ref.variable".
 
 Notice:
 - For events use standard-attributes e.g. "onclick", "oninput".
