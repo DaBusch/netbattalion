@@ -1,4 +1,4 @@
-// $('tag|#id|.class|[data-foo="value"]|...') returns one element or NodeList 
+// $('tag|#id|.class|[data-foo="value"]|...') returns one element or NodeList\n
 // .d dom-element
 // .each -> loops throught NodeList
 // .html('innerHTML')
