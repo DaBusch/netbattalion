@@ -4,7 +4,7 @@
         s = {},
         o = document.querySelectorAll("[data-bind]"),
         f = (v) => {
-            for (i in d = data[v]) window[i] = d[i]
+            for (i in d = data[v]) this[i] = d[i]
         }
     data.init()
     f('properties')
