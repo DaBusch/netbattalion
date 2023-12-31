@@ -47,8 +47,8 @@
 
     <div
         data-bind="myVar,green"
-        data-set="setHTML"
-    ></div>
+        data-set="self.innerHTML=ref.myVar"
+    >xxxxxxxxxxxxxxxxx</div>
 
     <div
         data-bind="myVar,green" class="red"
@@ -65,16 +65,14 @@
         >Toggle class</button>
     
     <button class="red"
-        data-bind="bool,false"
+        data-bind="bool,!!1"
         onclick="
             ref.bool = !ref.bool
-            console.log(ref.bool)
-            ref.bool ? this.style.backgroundColor = color[1] : this.style.backgroundColor = color[0]
-            self.innerHTML = typeof(ref.bool)
         "
-        data-set="            
-            ref.bool ? self.style.backgroundColor = color[1] : self.style.backgroundColor = color[0]
-            self.innerHTML = ref.bool"
+        data-set="
+            let x = !!ref.bool
+            x ? self.style.backgroundColor = color[1] : self.style.backgroundColor = color[0]
+            self.innerHTML = x"
     >Test</button>
     
     <div
@@ -115,6 +113,6 @@
             "
         >
     </div>
-    <script src="like-alpine.test.min.js"></script>
+    <script src="netbattalionJS.js"></script>
 </body>
 </html>
