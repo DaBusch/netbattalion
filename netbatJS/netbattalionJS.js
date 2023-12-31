@@ -6,7 +6,6 @@
         f = (v) => {
             for (i in d = data[v]) this[i] = d[i]
         }
-        console.log(data)
     data.init()
     f('properties')
     f('methods')
