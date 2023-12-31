@@ -19,7 +19,7 @@ Just 412 Bytes!!! (This README has 568 Bytes)
 
 A JavaScript library designed to simplify HTML DOM tree traversal and manipulation and event handling like jQuery.
 
-609 Bytes
+761 Bytes
 
 ### netbattalion Crypto
 
