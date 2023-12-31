@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 {font-size: 2rem}
+        h2 {font-size: 1.4rem}
+        p {font-size: 1rem}
+        .blue {background: blue}
+        .gray {background: lightgray}
+    </style>
+</head>
+
+<body>
+    <div id="header" class="red"></div>
+    <div id="main" class="green">main content</div>
+    <div id="footer" class="red"></div>
+
+    <script src="netbattalionQuery.min.js"></script>
+
+    <script>
+        const recource = {
+            title: 'Page Title',
+            content: [
+                {
+                    title: 'Title One',
+                    text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.'
+                },
+                {
+                    title: 'Title Two',
+                    text: 'Ut ornare lectus sit amet. Nunc sed velit dignissim sodales ut eu sem integer vitae. Ullamcorper malesuada proin libero nunc consequat interdum varius sit. Id venenatis a condimentum vitae sapien pellentesque habitant morbi tristique. Amet venenatis urna cursus eget nunc scelerisque viverra mauris in.'
+                }
+            ]
+        }
+
+        // ========================================================================================================================
+
+        //          $('selector')-function returns
+        //          single element or nodelist.
+        //          When a nodelist is returned,
+        //          it requires a callback-function
+        //          to loop throught the node-elements
+
+        // $('tag|#id|.class|[data-foo="value"]|...', callback) returns one element or NodeList (NodeList needs Callback-function),
+        // .d dom-element
+        // .each('callback(d)') -> loops throught Data-Object
+        // .html('innerHTML')
+        // .class('add|remove', 'class')
+        // .style('property', 'value')
+        // .event('add|remove', 'event', 'callback')
+        // .insert('newChild')
+        // .parent()
+        // .attribute('set|get|remove', 'attribute', 'value')
+
+        // ========================================================================================================================
+
+        $('#header')
+            .attribute('set', 'class', 'gray')
+            .style('padding', '1rem')
+            .html('Site Header')
+
+        $('#footer')
+            .class('add', 'gray')   
+            .style('padding', '1rem')
+            .html('Site Footer')
+
+        const main = $('#main')
+            .html('')
+            .insert('h1')
+            .html(recource.title)
+            .parent()
+
+        let i = 0 // Counter is needed to loopü throught recource-data
+        main.each(
+            recource,
+            (d) => {
+                d
+                .insert('div')
+                    .class('add', 'gray')
+                    .style('margin', '1rem')
+                    .style('padding', '1rem')
+                    .insert('h2')
+                        .html(recource.content[i].title)
+                    .parent()
+                    .insert('p')
+                        .html(recource.content[i].text)
+                    .parent()
+                    .insert('button')
+                        .event('add', 'click', clk)
+                        .html('Click me')
+                        .style('display', 'block')
+                    .parent()
+                .parent()
+                i++
+            }
+        )
+        .style('color', 'blue')
+
+
+        $('p', (element) => {
+                element.style('overflow', 'hidden')
+            }
+        )
+
+        function clk(e) {
+            e.preventDefault()
+            e.target.style.background = "yellow"
+            $('.gray', (d) => {
+                    d.style('background', 'orange')
+                }
+            )
+        }
+    </script>
+</body>
+
+</html>
