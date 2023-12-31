@@ -1,6 +1,6 @@
 # netbatJS
 
-A minimalistic javascript reactivity framework to put javascript code into your HTML-dom attributes. Inspired by Alpine JS and HTMX. This may be the tinyest Javascript framework out there.
+A minimalistic Javascript reactivity framework to put javascript code into your HTML-dom attributes. Inspired by Alpine JS and HTMX. This may be the tinyest Javascript framework out there.
 
 Just 392 Bytes!!! (This README has 778 Bytes)
 
