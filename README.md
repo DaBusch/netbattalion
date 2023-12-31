@@ -13,7 +13,7 @@ https://www.netbattalion.de
 
 A minimalistic Javascript reactivity framework to put javascript code into your HTML-dom attributes. Inspired by AlpineJS and HTMX.
 
-Just 412 Bytes!!! (This README has 568 Bytes)
+Just 412 Bytes!!! (This README has 712 Bytes)
 
 ### netbatQuery
 
