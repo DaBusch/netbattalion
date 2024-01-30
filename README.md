@@ -9,6 +9,7 @@ https://www.netbattalion.de
 
 ## Projects
 
+<a href="https://github.com/DaBusch/netbattalion/tree/main/netbatJS"><h3>netbatJS</h3></a>
 ### netbatJS
 
 A minimalistic Javascript reactivity framework to put javascript code into your HTML-dom attributes. Inspired by AlpineJS and HTMX. This may be the tinyest Javascript framework out there.
