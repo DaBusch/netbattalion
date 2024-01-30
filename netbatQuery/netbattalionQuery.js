@@ -1,8 +1,8 @@
-$ = (e, t) => {
+!( $ = (e, t) => {
     let r = {
         d: 0,
         each: (e, d) => {
-            for (t in e) d(r);
+            for (t in e) d(r)
             return r;
         },
         html: (e) =>
@@ -18,7 +18,7 @@ $ = (e, t) => {
                     (r.d.removeEventListener(t, d, n), r) : r,
         insert: (e) => {
             let t = document.createElement(e);
-            return r.d.appendChild(t), (r.d = t), r;
+            return r.d.appendChild(t), (r.d = t), r
         },
         parent: () => ((r.d = r.d.parentNode), r),
         attribute: (e, t, d) =>
@@ -32,16 +32,16 @@ $ = (e, t) => {
     };
     return (
         (() => {
-            let d = document.querySelectorAll(e);
+            let d = document.querySelectorAll(e)
             1 == d.length
                 ? (r.d = d[0])
                 : (() => {
-                      for (let e of d) (r.d = e), t(r);
-                  })();
+                      for (let e of d) (r.d = e), t(r)
+                  })()
         })(),
         r
     );
-};
+})
 
 // $('tag|#id|.class|[data-foo="value"]|...', callback) returns one element or NodeList (NodeList needs Callback-function), 
 // .d dom-element
