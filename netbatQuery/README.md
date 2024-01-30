@@ -1,6 +1,6 @@
 netbatQuery is a JavaScript library designed to simplify HTML DOM tree traversal and manipulation and event handling like jQuery.
 
-761 Bytes
+637 Bytes
 
 // $('tag|#id|.class|[data-foo="value"]|...', callback) returns one element or NodeList (NodeList needs Callback-function),<br>
 // .d dom-element<br>
