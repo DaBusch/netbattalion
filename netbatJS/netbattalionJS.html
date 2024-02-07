@@ -5,113 +5,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        * {margin: 1rem; padding: 1rem;}
-        body{height: 100%;}
-        div {margin: 1rem; display: block;}
-        .red {
-            background-color: red;
-        }
-        .green {
-            background-color: green;
-        }
-        button { width: 90%;}
+        * {margin: 1rem; padding: 0;}
+        body{height: 100%; font-size: 1.2rem;}
+        div, p {margin: 0.5rem; display: block; overflow: hidden;}
+        #products div {padding: .5rem; background-color: #ccc; }
+        button,input { width: 45%; display: block; margin: 0 auto; padding: .5rem; float: right}
+        input {float: left;}
+        #basket {background-color: #ccc;}
     </style>
     <script>
-        const data = {
-            properties: {
-                open: false,
-                color: ['yellow','orange'],
-            },
-            methods: {
-                methA: function(e){ console.log('qqqqqqqqqqqqqqqqqq',e,this)},
-                myFetch: ( e, id ) => {var html =''; fetch('https://dummyjson.com/products/1') .then(res => res.json()) .then(json => 
-                        {   for (v in json){
-                                html += `<p>${v}: ${json[v]}</p>`
-                            }
-                            html = `<div style='background: #aaa'>${html}</div>`
-                            id ? document .getElementById (id) .innerHTML = html : e .target .innerHTML = html
-                        }
-                    ) },
-                setHTML: (d)=>d.innerHTML = '....data.methods.myFetch',
-            },
-            init: ()=>{
-                data.methods.myFetch(event,'pageLoad')
-                data.methods.setHTML(title)
-            }
+        MyOwnObject = {
+            myFetch: ( e, id ) => {
+                    var html =''; fetch('https://dummyjson.com/products').then(res => res.json())
+                    .then(json => (json.products.length = 30, ref.products = json.products))
+                },
+                setShop: (v)=>ref.some.push(v)
         }
     </script>
 </head>
-<body>
-    <h1 id="title"></h1>
-    <div id="pageLoad"></div>
+<body onload="MyOwnObject.myFetch()" data-bind="toggle"
+    data-set="
+        ref.toggle ? me.style.background = 'lightgray' : me.style.background = '#fff'"
+        >    
+    <div id="store" data-bind="background,'#fff'"
+        data-set="me.style.background=ref.background"
+    >
+        <h1 id="title">My Store</h1>
 
-    <div
-        data-bind="myVar,green"
-        data-set="self.innerHTML=ref.myVar"
-    >xxxxxxxxxxxxxxxxx</div>
+        <div id="basket">            
+            <h3>Your Purchase</h3>
+            <p>You have 
+                <b data-bind="some"
+                    data-set="
+                        me.innerHTML = ref.some.length"
+                >ljlkj</b> products in your basket.
+            </p>
+            <p>Products in basket: 
+                <span data-bind="some,[]"
+                    data-set="
+                        let ht = 'Basket is empty.'
+                        if (ref.some.length > 0) {
+                            ht = '<div>'
+                            let p = 0
+                            for ( i of ref.some ){
+                                p += ref.products[i].price                
+                                ht += `<p>${ref.products[i].title}: ${ref.products[i].price} €</p>`
+                            }
+                            ht += `</div><p>Purchase amount: <b>${p} € Net</b> plus <b>${0.19*p} € Tax</b> = <b>${1.19*p} € Your Price</b></p>`
+                        }                
+                        me.innerHTML = ht"
+                    ></span>
+                </p>
+        </div>
 
-    <div
-        data-bind="myVar,green" class="red"
-        data-set="
-            self.classList.remove(...self.classList);self.classList.add(ref.myVar)
-            self.innerHTML = ref.myVar"
-    ></div>    
+        <div>
+            <button data-bind="toggle,false"
+                onclick="
+                    ref.toggle = !ref.toggle
+                    ref.toggle ? ref.background = 'gray' : ref.background = '#fff'"
+            >Toggle Backgroundcolor
+            </button>
+            <input name="sertxt" type="text" placeholder="Product Description Search" data-bind="searchtext,null"
+                oninput="
+                    ref.search = ref.searchtext = this.value.toLowerCase() || 'null'
+                    ref.products=ref.products"
+                data-set=""
+            >
+            <input type="text" id="byprice" type="number" placeholder="Search by Price (Max Price)" data-bind="byprice,100000"
+                oninput="ref.price = ref.byprice=Number(this.value) || 100000
+                ref.products=ref.products"
+                data-set=""
+            >
+        </div>
 
-    <button
-        onclick="
-            open = !open
-            ref.myVar == 'green' ? ref.myVar = 'red' : ref.myVar = 'green'
-        "
-        >Toggle class</button>
-    
-    <button class="red"
-        data-bind="bool,!!1"
-        onclick="
-            ref.bool = !ref.bool
-        "
-        data-set="
-            let x = !!ref.bool
-            x ? self.style.backgroundColor = color[1] : self.style.backgroundColor = color[0]
-            self.innerHTML = x"
-    >Test</button>
-    
-    <div
-        onclick="myFetch(event)"
-        >
-        <button>Fetch Data from the Internet</button>
-    </div>
-
-    <div
-        data-bind="writtenText"
-        data-set="self.innerHTML=ref.writtenText"
-    >Updated on input</div>
-
-    <input type="text" placeholder="Writesomething" oninput="ref.writtenText=this.value">
-
-    <div>
-        <span data-bind="numberOne,5" data-set="self .innerHTML = ref .numberOne; console.log(event)">1</span> + 
-        <span data-bind="numberTwo,7" data-set="self .innerHTML = ref .numberTwo">3</span> = 
-        <span data-bind="result,0" data-set="self .innerHTML = Number ( ref .numberOne ) / ref .numberTwo">0</span>
-        <br>
-        <label for="one">First number</label>
-        <input name="one" type="number"
-            oninput="
-                ref.numberOne=this.value
-                ref.result=''
-            "
-        ><br>
-        <label for="two">Second number</label>
-        <input name="two" type="number"
-            onkeydown="
-            //  to avoid 'e' and 'E'
-            //  https://stackoverflow.com/questions/31706611/why-does-the-html-input-with-type-number-allow-the-letter-e-to-be-entered-in
-                var keyCode = ('which' in event) ? event.which : event.keyCode;
-                return !(keyCode == 69 || keyCode == 101);"
-            oninput="
-                ref.numberTwo=this.value
-                ref.result=''
-            "
-        >
+        <div>
+            <p>You are searching for: 
+                <b data-bind="search"
+                    data-set="'null'!=ref.search ? me.innerHTML=ref.search:null"
+                >All products</b>
+            </p>
+            <p>and Price less than: 
+                <b data-bind="price"
+                    data-set="100000!=ref.price?me.innerHTML=ref.price:null"
+                >No limit</b>
+            </p>
+            <p>Products found: 
+                <b data-bind="found,0"
+                    data-set="me.innerHTML=ref.found"
+                >All</b>
+            </p>
+        </div>
+        <div id="products" data-bind="products"
+            data-set="
+                found = 0
+                let products
+                MyOwnObject.func = (v) => {ref.some.push(v)} 
+                if (ref.products){
+                products ='<h3>List of Products</h3>'
+                    for (let i of ref.products ){
+                        let r = ref.products.indexOf(i)
+                        if ( (i.description.toLowerCase().includes(ref.searchtext) && i.price<ref.byprice) || ('null'==ref.searchtext && i.price<ref.byprice) ){
+                            found++
+                            products += `
+                            <div class='card'>
+                                <h2>${i.title}</h2>
+                                <h3 style='float:right'>${i.price}</h3>
+                                <img src='${i.thumbnail}' width='100'><div>
+                                    <p>'${i.description}'</p>
+                                    <button id='${r}' onclick='MyOwnObject.func(${r});ref.some = ref.some'>Add to Shopping Card</button>
+                                </div>
+                            </div>`
+                        }
+                    }
+                }
+                me.innerHTML = products
+                ref.found = found">
+        </div>
     </div>
     <script src="netbattalionJS.js"></script>
 </body>
