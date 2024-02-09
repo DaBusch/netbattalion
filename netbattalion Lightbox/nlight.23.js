@@ -1,5 +1,6 @@
 ! ( () => {
     let i, ck = 'click', b = '#ntbtlx ', d = document, sx, ex, dl = 40,
+
     //------------------- Helper Funktions ------------------------------------
     //--------------------$ ck d et q ev tc fw bk cl load s n g q j k l st
     et = ( e ) => e .target,
@@ -21,7 +22,8 @@
         s = z.style    
         return t
     }
-    //------------------- FF, BW, CLOSE IMAGE ---------------------------------
+
+    //------------------- FF, BW, CLOSE LIGHTBOX ------------------------------
     let fw = () => ( ++j == l && (j = 0), s() ),
     bk = () => ( --j < 0 && (j = l-1), s() ),
     cl = e => (
@@ -87,7 +89,6 @@
                 $( b + '#x' ). p( '1' )
             )
     } ) };
-
     n .id = 'ntbtlx'
     n .innerHTML = `<div id="l" class="inv"><figure id="w"><img id="s"><ficgcaption id="t"></figcaption></figure></div><div id="b"></div><div id="c"></div><div id="f"></div><div id="x" class="inv"><div id="z"></div><div id="y"></div></div>`
     $( "body" ) .d .appendChild( n )
@@ -95,7 +96,8 @@
     $( b + '#b' ) .e( ck, bk )
     $( b + '#f' ) .e( ck, fw )
     $( b + '#c' ) .e( ck, cl )
+
+    //------------------- TOUCH EVENTS ----------------------------------------
     y = $( b + '#l' ) .e( 'touchstart', ( e ) => ( e.stopPropagation(), sx = tc( e ) ), true )
-    // y .e( 'touchend', ( e ) => { ex = parseInt( tc( e ) ) - sx; if( ex > dl ) { bk() } if( ex < -dl ) { fw() } }, false )
     y .e( 'touchend', ( e ) => ( ex = parseInt( tc( e ) ) - sx, ex > dl ? bk() : ex < -dl && fw() ), false )
-    } ) ()
+} ) ()
