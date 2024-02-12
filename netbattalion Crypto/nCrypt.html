@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./netbattalionCrypto.min.js"></script>
+</head>
+<body>
+    <script>
+(async () => {
+
+    let text = 'Das Verschlüsseln von Daten mithilfe der Web Crypto API funktioniert ähnlich wie das Signieren von Daten, nur dass das Ergebnis eben die verschlüsselten Informationen statt der Signatur sind. Das folgende Codebeispiel nutzt eine Kombination von Schlüsseln. Zunächst erzeugt der Quellcode einen passwortbasierten Schlüssel mit dem Verwendungszweck deriveKey, von dem anschließend ein zweiter Schlüssel abgeleitet wird. Dies bietet zum einen die Möglichkeit, für die Ver- und Entschlüsselung ein Passwort zu nutzen, und zum anderen wird die Sicherheit durch die Kombination von zwei Verschlüsselungsmechanismen zusätzlich erhöht. Die encrypt()-Methode nutzt dann den zweiten Schlüssel, um einen Text mit dem AES-GCM-Algorithmus zu verschlüsseln. Die Entschlüsselung erfolgt anschließend mit der decrypt()-Methode und ebenfalls mit dem zweiten Schlüssel.',
+    
+    // ----------------- enAES / deAES ( Password_String, Plaintext_String, Salt_UInt8ArrayString, Iv_UInt8ArrayString ) -------------------------
+
+    // encoded = await  enAES( 'password', text, '214,95,242,153,10,51,34,205,51,182,27,1,140,89,176,46', '128,10,192,194,244,12,86,217,54,108,78,193,239,226,218,181' )    
+    // decoded = await deAES( 'password', encoded, '214,95,242,153,10,51,34,205,51,182,27,1,140,89,176,46', '128,10,192,194,244,12,86,217,54,108,78,193,239,226,218,181' )
+
+    encoded = await  enAES( 'password', text, saltIvString, iv ),
+    decoded = await deAES( 'password', encoded, saltIvString, iv )
+
+    console.log('Save Salt String: ', saltIvString)
+    console.log('Save IV String: ', iv)
+    console.log('encrypted data: ', encoded)
+    console.log('decrypted data: ', decoded)
+
+    // ------------------------------- SIGNATE AND VERIFY MESSAGES ------------
+    let ECDSA_KeyPair = await genECDSAKeyPair(),
+    signature = await signMessage(text, ECDSA_KeyPair.privateKey)
+    console.log('Signature: ', signature)
+    verified = await verifyMessage( text, ECDSA_KeyPair.publicKey, signature)
+    console.log('Signature verified: ', verified)
+
+    // ------------------------------- DIFFIE HELLMAN KEY EXCHANGE ------
+    
+    let EDCH_KeyPair_1 = await genECDHKeyPair(['deriveKey'])
+    let EDCH_KeyPair_2 = await genECDHKeyPair(['deriveKey'])
+    console.log(EDCH_KeyPair_1)
+    let secret = await deriveSecretKey(EDCH_KeyPair_1.privateKey, EDCH_KeyPair_2.publicKey)
+    console.log('Diffie Hellman Secret Key: ', secret)
+    
+    encoded1 = await  enAES( secret, text, iv )
+    console.log(encoded1)
+    decoded1 = await deAES( secret, encoded1, iv )
+    console.log(decoded1)
+
+
+})()
+    </script>
+</body>
+</html>
