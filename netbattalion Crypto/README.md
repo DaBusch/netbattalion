@@ -1,12 +1,23 @@
 
----------- USABLE FUNCTIONS -------------------
+---------- FUNCTIONS -------------------
 
-getNewSaltOrIv ( number of values )
+Functions return PROMISE, use "async/await"
 
-getKeyMaterial ( password )
+    // ----------------------------------- ENCRYPT AND DECRYPT MESSAGE --------------
 
-derivePBKDF2Key ( password, salt )
+enAES / deAES ( Password_String || CryptoKey, Plaintext_String,  Iv_UInt8ArrayString, (Salt_UInt8ArrayString)  )
 
-AES_GCM_encrypt ( plaintext, password, salt, iv )
+Use Salt with plain text password
 
-AES_GCM_decrypt ( plainciphertext, password, salt, iv )
+    // ------------------------------- DIFFIE HELLMAN KEY EXCHANGE ------
+    
+genECDHKeyPair()
+deriveSecretKey(KeyPair_Alice.privateKey, KeyPair_Bob.publicKey)
+and
+deriveSecretKey(KeyPair_Bob.privateKey, KeyPair_Alice.publicKey)
+
+    // ------------------------------- SIGNATE AND VERIFY MESSAGES ------------
+    
+genECDSAKeyPair()
+signMessage(text, KeyPair.privateKey)
+verifyMessage( text, KeyPair.publicKey, signature)
