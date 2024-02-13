@@ -13,16 +13,21 @@ Use Salt with plain text password
 
     // ------------------------------- DIFFIE HELLMAN KEY EXCHANGE ------
     
-genECDHKeyPair()<br>
-deriveSecretKey(KeyPair_Alice.privateKey, KeyPair_Bob.publicKey)<br>
-and<br>
-deriveSecretKey(KeyPair_Bob.privateKey, KeyPair_Alice.publicKey)
+genECDHKeyPair ()
+
+deriveSecretKey ( KeyPair_Alice .privateKey, KeyPair_Bob .publicKey )
+
+and
+
+deriveSecretKey ( KeyPair_Bob .privateKey, KeyPair_Alice .publicKey )
 
     // ------------------------------- SIGNATE AND VERIFY MESSAGES ------------
     
-genECDSAKeyPair()<br>
-signMessage(text, KeyPair.privateKey)<br>
-verifyMessage( text, KeyPair.publicKey, signature)
+genECDSAKeyPair ()
+
+signMessage ( text, KeyPair .privateKey )
+
+verifyMessage ( text, KeyPair .publicKey, signature )
 
     // ------------------------------- ES6 MODULE ------------
 
