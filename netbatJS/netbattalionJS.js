@@ -1,4 +1,4 @@
-! ( ( ) => {
+( ( ) => {
     let q, r = {}, s = {},
     o = document .querySelectorAll( "[data-bind]" )
     for( i of o ) {
@@ -6,15 +6,17 @@
         t = u. bind .trim() .split(","),
         y = t[ 0 ],
         v = t[ 1 ]
-        v ? r[ y ] = eval( v ) ?? i.innerHTML : null
+        v && (r[ y ] = eval( v ) ?? i.innerHTML)
         s[ y ] ?? ( q = s[ y ] = [] ),
         q .push( [ i, Function( u .set ) ] )
     }
-    for ( i in ref = new Proxy(
+    ref = new Proxy(
         r, {
             set: ( k, t, e ) => {
-                for ( i of ( k[ t ] = e, s[ t ] ) ) i[ 1 ] ( me = i[ 0 ] ) 
+                k[ t ] = e
+                for ( i of s[ t ] ) i[ 1 ] ( me = i[ 0 ] ) 
             }
         }
-    ) ) ref[i]=r[i]
+    )
+    for ( i in ref ) ref[i]=r[i]
 } )()
