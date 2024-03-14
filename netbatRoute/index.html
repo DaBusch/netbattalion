@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="netbatRoute.min.js"></script>
+    <title>USERS - Dummy REST API of JSON data for
+        development</title>
+</head>
+<body>
+    <nav>  
+
+        <a href="/" onclick="config.clear()">Home</a>
+        <a href="users/filter?key=hair.type&value=Strands" onclick="route( event, 'users', 'Benutzer' )">Users</a> <!-- Second and Third arguments are optional -->
+        <a href="recipes" onclick="route( event, 'recipes', 'Rezepte' )">Recipes</a>          <!-- Event, Template, Pagetitle -->
+        <a href="carts" onclick="route( event, 'carts', 'Sammlungen' )">Carts</a>
+    </nav>
+    <main>
+        <h1>Page</h1>
+        <p>content</p>
+
+    </main>
+    <script>
+        
+        // -------------------------- RENDER TEMPLATES ----------------------
+
+        let templates = {
+            start: ( v ) => {
+                document.getElementsByTagName('title')[0].innerHTML = 'Spaßige Seite'
+                return `<p>${v.value}</p>`
+            }
+            , recipes: ( v ) => `<h2>${v .name}</h2><p>${v .ingredients}</p>`
+            , carts: ( v ) => (
+                    h = `<h2>${ v .id }</h2>`,
+                    ( v .products .forEach( e => h += `<p>${ e .title }</p>` ) ),
+                    h + '<br>'
+            )
+            , users: ( v ) => `<p>${ v .firstName } ${ v .lastName }: ${v. hair .type} ${v .hair .color}</p>`
+        }
+
+        // -------------------------- OPTIONS ----------------------
+
+        , config = {
+            openLast: true,
+            clear: ()=>localStorage.setItem('p', ''), // Refresh startpage, else last content is loaded
+
+            prot: 'https://',
+            host: 'dummyjson.com/',
+
+            render: 'main',                           // Dom-element to render to
+            templates: templates,                     // Object containing the templates
+            unload: true                             // Warn, when page tries to reload
+        }
+        
+        
+        // -------------------------- ROUTER INIT ----------------------
+
+        // const route = new Route(config, [ {value: 'empty'} ], 'main', 'start', 'Seitentitel')
+
+        // OR
+
+        fetch('https://dummyjson.com/users' )
+            .then( r => r .json( ) )
+            .then(
+                s => {
+                    route = new Route(config, s['users'], 'users', 'Startseite alle Benutzer')
+                }
+            )
+    </script>
+</body>
+</html>
