@@ -21,6 +21,12 @@ A JavaScript library designed to simplify HTML DOM tree traversal and manipulati
 
 640 Bytes
 
+<h3><a href="https://github.com/DaBusch/netbattalion/tree/main/netbatRoute">netbatRoute</a></h3>
+
+A History Router for Single Page Applications and Headless CMS.
+
+404 pages should redirect to index page.
+
 <h3><a href="https://github.com/DaBusch/netbattalion/tree/main/netbattalion%20Crypto">netbattalion Crypto</a></h3>
 
 Some Javascript funtions to encrypt and decrypt plain text with AES-GCM. 1.05 kB
