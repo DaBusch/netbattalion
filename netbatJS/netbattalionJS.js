@@ -3,13 +3,19 @@
     o = document .querySelectorAll( "[data-bind]" )
     for( i of o ) {
         let u = i .dataset,
+
+// ---- Variables ----------------------------------------
         t = u. bind .trim() .split(","),
         y = t[ 0 ],
         v = t[ 1 ]
         v && (r[ y ] = eval( v ) ?? i.innerHTML)
+
+// ---- Functions ----------------------------------------
         s[ y ] ?? ( q = s[ y ] = [] ),
         q .push( [ i, Function( u .set ) ] )
     }
+
+// ---- Observe ------------------------------------------
     ref = new Proxy(
         r, {
             set: ( k, t, e ) => {
