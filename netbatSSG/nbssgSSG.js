@@ -6,16 +6,6 @@ function generate(data) {
         downloadString(htm, "text/html", '/vkjfdshfjk/' + d.name)
     }
 }
-// function wait(t) {
-//     return new Promise((res, rej)=>{
-//         setTimeout(()=>{res('kjfdlkasdjf');console.log(t)}, t)
-        
-//     })
-// }
-// wait(2000).then((x)=>{console.log(x);return 'AWEEEEEEEEEEEEEEEEEEEE'}).then((y)=>console.log(y))
-// let butt = document.getElementsByTagName('button')[0]
-// console.log(butt)
-
 
 function getClick() {
     return new Promise(acc => {
@@ -26,6 +16,7 @@ function getClick() {
       document.addEventListener('click', handleClick);
     });
   }
+
 async function simulate(data, tmp) {
     for ( [i,d] of Object.entries(data)){
         let htm = templates[tmp](d)
@@ -35,6 +26,7 @@ async function simulate(data, tmp) {
         await getClick()
     }
 }
+
 function downloadString(text, fileType, fileName) {
     let h = document.getElementsByTagName('head')[0],
     html = `<!DOCTYPE html>
