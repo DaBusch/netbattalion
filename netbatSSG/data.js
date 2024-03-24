@@ -1,9 +1,4 @@
-let test = {
-    "eins": "Dies ist eins",
-    "zwei": "Dies ist zwei"
-}
-console.log(typeof(test))
-console.log(test.eins)
+
 let data = [
     {
         name: 'index.html',
@@ -25,7 +20,8 @@ let data = [
         content: 'Dies ist der Inhalt 3'
     }
 ]
-let templates = {
+
+, templates = {
     tpl1: (d)=>{
         return `
     <div>
@@ -35,7 +31,3 @@ let templates = {
 `
     }
 }
-
-
-generate(data)
-// simulate(data, 'tpl1')

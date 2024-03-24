@@ -1,9 +1,11 @@
+let toggle = true
 
-function generate(data) {
+function generate(e, data) {
+    toggle = false
+    e.stopPropagation()
     for ( [i,d] of Object.entries(data)){
         let htm = templates[d.template](d)
-        console.log(htm)
-        downloadString(htm, "text/html", '/vkjfdshfjk/' + d.name)
+        downloadString(htm, "text/html", d.name)
     }
 }
 
@@ -18,13 +20,15 @@ function getClick() {
   }
 
 async function simulate(data, tmp) {
-    for ( [i,d] of Object.entries(data)){
-        let htm = templates[tmp](d)
-        console.log(htm)
-        document.getElementsByTagName('body')[0].innerHTML = htm
-        console.log('Wait on Click')
-        await getClick()
-    }
+    if ( toggle ) {
+        for ( [i,d] of Object.entries(data)){
+            console.log('Wait on Click')
+            await getClick()
+            let htm = templates[tmp](d)
+            console.log(htm)
+            document.getElementsByTagName('body')[0].innerHTML = htm
+        }
+    }    
 }
 
 function downloadString(text, fileType, fileName) {
