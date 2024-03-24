@@ -27,6 +27,10 @@ A History Router for Single Page Applications and Headless CMS.
 
 404 pages should redirect to index page.
 
+<h3><a href="https://github.com/DaBusch/netbattalion/tree/main/netbatSSG">netbatSSG</a></h3>
+
+A Static Site Generator and a Dynamic To Static Site Converter in very early stage.
+
 <h3><a href="https://github.com/DaBusch/netbattalion/tree/main/netbattalion%20Crypto">netbattalion Crypto</a></h3>
 
 Some Javascript funtions to encrypt and decrypt plain text with AES-GCM. 1.05 kB
