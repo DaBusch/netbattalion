@@ -38,3 +38,7 @@ Some Javascript funtions to encrypt and decrypt plain text with AES-GCM. 1.05 kB
 <h3><a href="https://github.com/DaBusch/netbattalion/tree/main/netbattalion%20Lightbox">netbattalion Lightbox</a></h3>
 
 A Javascript website lightbox. It works out of the box. There's no need for configuration. 3.11 kB Javascript and CSS.
+
+<h3><a href="https://github.com/DaBusch/netbattalion/tree/main/pong.html">Pong</a></h3>
+
+A simple Pong Game
