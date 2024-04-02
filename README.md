@@ -45,6 +45,6 @@ A Javascript website lightbox. It works out of the box. There's no need for conf
 
 <h4><a href="https://github.com/DaBusch/netbattalion/tree/main/OS%20Windows/demostore.exe">Demo Store which uses netbatJS.</a></h4>
 
-<h4><a href="https://github.com/DaBusch/netbattalion/tree/main/OS%20Windows/wohnung.exe">A 3D Application</a></h4>
+<h4><a href="https://github.com/DaBusch/netbattalion/tree/main/OS%20Windows/wohnung.exe">A BabylonJS 3D Application</a></h4>
 
 <a href="https://tauri.app">https://tauri.app/</a>
