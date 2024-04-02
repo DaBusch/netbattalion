@@ -1,4 +1,4 @@
-( ( ) => {
+; ( ( ) => {
     let q, r = {}, s = {},
     o = document .querySelectorAll( "[data-bind]" )
     for( i of o ) {
