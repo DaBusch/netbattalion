@@ -1,4 +1,4 @@
-!( $ = (e, t) => {
+$ = (e, t) => {
     let r = {
         d: 0,
         each: (e, d) => {
@@ -41,7 +41,7 @@
         })(),
         r
     );
-})
+}
 
 // $('tag|#id|.class|[data-foo="value"]|...', callback) returns one element or NodeList (NodeList needs Callback-function), 
 // .d dom-element
