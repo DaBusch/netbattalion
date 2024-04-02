@@ -13,40 +13,40 @@ let d = document
     }
     return r
 }
-, cl = ( z, v ) => ( z .addEventListener( 'click', v) )
-, stl = $('#styles').n
-, html = $( 'html' ).n
-, sys = $('#system').n
-, ctr = $('#control').n
+, cl = ( z, v ) => ( z .addEventListener( 'click', v ) )
+, stl = $( '#styles' ) .n
+, html = $( 'html' ) .n
+, sys = $( '#system' ) .n
+, ctr = $( '#control' ) .n
 // , edt = $( 'button', 'all' ) .n[ 0 ]
 , gen = $( 'button', 'all' ) .n[ 0 ]
 , b = $( 'button', 'all' ) .n[ 1 ]
-, editor = $('#editor').n
+// , editor = $('#editor').n
 , out = ''
 
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
-function setLinksAndScripts(data, headOrBody) {
+function setLinksAndScripts( data, headOrBody ) {
     let d
     for ( let e of headOrBody ) {
         let h = $( 'head' )
         , b = $( 'body' )
-        'head' == e ? d = data[e] : 'body' == e && ( d = data )
+        'head' == e ? d = data[ e ] : 'body' == e && ( d = data )
         if ( d .scripts ) {
-            for ( let v of d.scripts) {
-                let s = document.createElement('script')
-                s.src = v
-                'head' == e && h.aC(s)
-                'body' == e && b.aC(s)
+            for ( let v of d .scripts) {
+                let s = document .createElement( 'script' )
+                s .src = v
+                'head' == e && h .aC( s )
+                'body' == e && b .aC( s )
             }
         }
-        if ( d .links) {
-            for ( let v of d.links) {
-                var l = document.createElement("link");
-                l.rel='stylesheet'
-                l.href = v;
-                'head' == e && h.aC(l)
-                'body' == e && b.aC(l)
+        if ( d .links ) {
+            for ( let v of d .links ) {
+                var l = document .createElement( "link" )
+                l .rel = 'stylesheet'
+                l .href = v
+                'head' == e && h .aC( l )
+                'body' == e && b .aC( l )
             }
         }
     }
@@ -55,7 +55,7 @@ function setLinksAndScripts(data, headOrBody) {
 function c() {
     return new Promise( a => {
         s = () => ( b .removeEventListener( 'click', s ), a() )
-        b .addEventListener('click', s );
+        b .addEventListener( 'click', s );
     } )
 }
 // ----------------------------------------------------------------------------
@@ -69,14 +69,14 @@ function ex( i, o ) {
 function generate( e, data ) {
     e .stopPropagation()
     for ( let i in data ) {        
-        download( ex( i, false ), "text/html", data[ i ] .name )
+        download( ex( i, !0 ), "text/html", data[ i ] .name )
     }
 }
 // ----------------------------------------------------------------------------
 async function simulate( d ) {
     let i = 0
     while ( !0 ) {
-        ex(i, true)
+        ex(i, !!0)
         i++
         i == d .length ? i = 0 : i
         console.log( 'Wait on Click' )
@@ -110,18 +110,18 @@ ${ x }
 // ----------------------------------------------------------------------------
 function drggbl(n) {
     let p1, p2, p3, p4
-    n.onmousedown = (e) => {
-        e.preventDefault()
-        p3 = e.clientX
-        p4 = e.clientY
-        d.onmouseup = () => d.onmousemove = null//function closeDragElement(){d.onmouseup = null; d.onmousemove = null}
-        d.onmousemove = (e) => {
-            p1 = p3 - e.clientX
-            p2 = p4 - e.clientY
-            p3 = e.clientX
-            p4 = e.clientY
-            n.style.top = (n.offsetTop - p2) + "px"
-            n.style.left = (n.offsetLeft - p1) + "px"
+    n.onmousedown = ( e ) => {
+        e .preventDefault()
+        p3 = e .clientX
+        p4 = e .clientY
+        d .onmouseup = () => d .onmousemove = null//function closeDragElement(){d.onmouseup = null; d.onmousemove = null}
+        d .onmousemove = ( e ) => {
+            p1 = p3 - e .clientX
+            p2 = p4 - e .clientY
+            p3 = e .clientX
+            p4 = e .clientY
+            n .style .top = ( n .offsetTop - p2 ) + "px"
+            n .style .left = ( n .offsetLeft - p1 ) + "px"
         }
     }  
 }
