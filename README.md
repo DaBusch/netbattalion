@@ -41,7 +41,7 @@ A Javascript website lightbox. It works out of the box. There's no need for conf
 
 <h3><a href="https://github.com/DaBusch/netbattalion/tree/main/OS%20Windows">Windows Programs made with Tauri</a></h3>
 
-<h4><a href="https://github.com/DaBusch/netbattalion/tree/main/OS%20Windows/pong.exe">A simple Pong Game</a></h4>
+&nbsp;&nbsp;&nbsp;&nbsp;<h4><a href="https://github.com/DaBusch/netbattalion/tree/main/OS%20Windows/pong.exe">A simple Pong Game</a></h4>
 
 <h4><a href="https://github.com/DaBusch/netbattalion/tree/main/OS%20Windows/demostore.exe">Demo Store which uses netbatJS.</a></h4>
 
