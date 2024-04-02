@@ -29,7 +29,7 @@ A History Router for Single Page Applications and Headless CMS.
 
 <h3><a href="https://github.com/DaBusch/netbattalion/tree/main/netbatSSG">netbatSSG</a></h3>
 
-A Static Site Generator and a Dynamic To Static Site Converter in very early stage.
+A Static Site Generator and a Dynamic To Static Site Converter in very early stage but very useful for my webprojects.
 
 <h3><a href="https://github.com/DaBusch/netbattalion/tree/main/netbattalion%20Crypto">netbattalion Crypto</a></h3>
 
