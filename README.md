@@ -42,3 +42,10 @@ A Javascript website lightbox. It works out of the box. There's no need for conf
 <h3><a href="https://github.com/DaBusch/netbattalion/tree/main/pong.html">Pong</a></h3>
 
 A simple Pong Game
+
+<h3><a href="https://github.com/DaBusch/netbattalion/tree/main/demostore.exe">Tauri Demo App</a></h3>
+
+A Windows Executable made with Tauri.
+Uses netbatJS.
+
+<a href="https://tauri.app">https://tauri.app/</a>
