@@ -1,4 +1,4 @@
-! ( () => {
+; ( () => {
     let i, ck = 'click', b = '#ntbtlx ', d = document, sx, ex, dl = 40,
 
     //------------------- Helper Funktions ------------------------------------
