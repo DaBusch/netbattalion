@@ -1,20 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="min-height: 100%;">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Netbattalion Static Site Generator</title>
+        <style id="styles">
+            html, body {
+                margin: 0;
+                padding: 0;
+            }
+            #control, #editor {
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                color: gray;z-index: 100;
+                position: fixed;
+                top: 300px;
+                left: 400px;
+                width: 200px;
+                margin: 0;
+                padding: 1rem;
+                overflow: unset;
+            }
+            #control button {
+                width: 100%;
+                padding: 1rem;
+            }
+            #editor {
+                top: 500px;
+            }
+            .invisible {
+                display: none
+            }
+        </style>
     </head>
     <body>
-        <h1>Netbattalion Static Site Generator</h1>
-        <p>Click on page to simulate pages each for each. See also in Console.</p>
-        <p style="background: lightsalmon; padding: 1rem;">...waiting for mouseclick to simulate the next page</p>
-        <button>Generate Site</button>
-        <script src="nbssgSSG.js"></script>
+        <div id="system">
+            <section id="control">
+                <h1 style="font-size:24px;text-align: center;margin: 1rem;">NetbatSSG</h1>
+                <!-- <button>Edit</button> -->
+                <button>Generate Site</button>
+                <button>Simulate next page</button>
+            </section>
+            <!-- <section id="editor" class="invisible">
+                <textarea name="edit" id="edit" cols="30" rows="10"></textarea>
+                <button>Generate Site</button>
+            </section> -->
+        </div>
         <script src="data.js"></script>
-        <script>    
-            document.getElementsByTagName('button')[0].addEventListener('click', ()=>generate(event, data), true)
-            simulate(data, 'tpl1')
-        </script>
+        <script src="nbssgSSG.js"></script>
     </body>
 </html>
