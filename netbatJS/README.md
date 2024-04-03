@@ -2,7 +2,7 @@
 
 A minimalistic Javascript reactivity framework to put javascript code into your HTML-dom attributes. Inspired by Alpine JS and HTMX. This may be the tinyest Javascript framework out there.
 
-Minified just 308 Bytes!!! (This README has more than 700 Bytes)
+Minified just 308 Bytes!!! (This README has 824 Bytes)
 
 It works, but is maybe not yet finished.
 
