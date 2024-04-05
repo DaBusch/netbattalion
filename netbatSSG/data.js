@@ -6,30 +6,28 @@ let data = [
         head: {
             title: 'Titeeeeel',
             scripts: [],
-            links: ['tpl1.css'],
+            links: ['./styles/tpl1.css'],
         },
         title:'Titel',
-        content: 'Dies ist der Inhalt',
-        scripts: ['nlight.js'],
-        links: ['nlight.23.min.css']
+        content: 'Dies ist der Inhalt'
     },
     {
         
         name: 'eins.html',
         template: 'tpl2',
         head: {
-            links: ['tpl2.css']
+            links: ['./styles/tpl2.css']
         },
         title:'Titel 2',
         content: '<h1>Dies ist der Inhalt 2</h1>',
-        scripts: ['nlight.js'],
-        links: ['nlight.23.min.css']
+        scripts: ['https://www.netbattalion.de/site/templates/scripts/nbl-lightbox.min.js'],
+        links: ['https://www.netbattalion.de/site/templates/styles/nbl-lightbox.css']
     },
     {
         name: 'zwei.html',
         template: 'tpl3',
         head: {
-            links: ['tpl3.css']
+            links: ['./styles/tpl3.css']
         },
         titel:'Titel 3',
         seiteninhalt: 'Dies ist der Inhalt 3'
