@@ -1,5 +1,5 @@
 ; ( ( ) => {
-    let q, r = {}, s = {},
+    let r = {}, s = {},
     o = document .querySelectorAll( "[data-bind]" )
     for( i of o ) {
         let u = i .dataset,
@@ -11,8 +11,8 @@
         v && (r[ y ] = eval( v ) ?? i.innerHTML)
 
 // ---- Functions ----------------------------------------
-        s[ y ] ?? ( q = s[ y ] = [] ),
-        q .push( [ i, Function( u .set ) ] )
+        s[ y ] ?? ( s[ y ] = [] ),
+        s[ y ] .push( [ i, Function( u .set ) ] )
     }
 
 // ---- Observe ------------------------------------------
@@ -24,5 +24,4 @@
             }
         }
     )
-    for ( i in ref ) ref[i]=r[i]
 } )()

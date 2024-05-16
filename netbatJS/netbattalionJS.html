@@ -36,26 +36,25 @@
         <div id="basket">            
             <h3>Your Purchase</h3>
             <p>You have 
-                <b data-bind="some"
+                <b data-bind="some,[]"
                     data-set="
                         me.innerHTML = ref.some.length"
-                >ljlkj</b> products in your basket.
+                >0</b> products in your basket.
             </p>
             <p>Products in basket: 
-                <span data-bind="some,[]"
+                <span data-bind="some"
                     data-set="
-                        let ht = 'Basket is empty.'
                         if (ref.some.length > 0) {
-                            ht = '<div>'
+                            let ht = '<div>'
                             let p = 0
                             for ( i of ref.some ){
                                 p += ref.products[i].price                
                                 ht += `<p>${ref.products[i].title}: ${ref.products[i].price} €</p>`
                             }
-                            ht += `</div><p>Purchase amount: <b>${p} € Net</b> plus <b>${0.19*p} € Tax</b> = <b>${1.19*p} € Your Price</b></p>`
-                        }                
-                        me.innerHTML = ht"
-                    ></span>
+                            ht += `</div><p>Purchase amount: <b>${p} € Net</b> plus <b>${0.19*p} € Tax</b> = <b>${1.19*p} € Your Price</b></p>` 
+                            me.innerHTML = ht
+                        }"
+                    >None</span>
                 </p>
         </div>
 
@@ -63,17 +62,18 @@
             <button data-bind="toggle,false"
                 onclick="
                     ref.toggle = !ref.toggle
-                    ref.toggle ? ref.background = 'gray' : ref.background = '#fff'"
+                    ref.toggle ? ref.background = 'gray' : ref.background = '#fff'
+                    console.log(typeof(ref.toggle))"
             >Toggle Backgroundcolor
             </button>
-            <input name="sertxt" type="text" placeholder="Product Description Search" data-bind="searchtext,null"
+            <input type="text" placeholder="Product Description Search" data-bind="search,null"
                 oninput="
-                    ref.search = ref.searchtext = this.value.toLowerCase() || 'null'
+                    ref.search = this.value.toLowerCase() || null
                     ref.products=ref.products"
                 data-set=""
             >
-            <input type="text" id="byprice" type="number" placeholder="Search by Price (Max Price)" data-bind="byprice,100000"
-                oninput="ref.price = ref.byprice=Number(this.value) || 100000
+            <input type="number" placeholder="Search by Price (Max Price)" data-bind="price,100000"
+                oninput="ref.price = Number(this.value) || 100000
                 ref.products=ref.products"
                 data-set=""
             >
@@ -82,12 +82,12 @@
         <div>
             <p>You are searching for: 
                 <b data-bind="search"
-                    data-set="'null'!=ref.search ? me.innerHTML=ref.search:null"
+                    data-set="null != ref.search ? me.innerHTML = ref.search : null"
                 >All products</b>
             </p>
             <p>and Price less than: 
                 <b data-bind="price"
-                    data-set="100000!=ref.price?me.innerHTML=ref.price:null"
+                    data-set="100000 != ref.price ? me.innerHTML = ref.price : null"
                 >No limit</b>
             </p>
             <p>Products found: 
@@ -105,7 +105,7 @@
                 products ='<h3>List of Products</h3>'
                     for (let i of ref.products ){
                         let r = ref.products.indexOf(i)
-                        if ( (i.description.toLowerCase().includes(ref.searchtext) && i.price<ref.byprice) || ('null'==ref.searchtext && i.price<ref.byprice) ){
+                        if ( (i.description.toLowerCase().includes(ref.search) && i.price<ref.price) || ('null'==ref.search && i.price<ref.price) ){
                             found++
                             products += `
                             <div class='card'>
@@ -120,9 +120,10 @@
                     }
                 }
                 me.innerHTML = products
+                console.log(typeof(ref.search),ref.search)
                 ref.found = found">
         </div>
     </div>
-    <script src="netbattalionJS.js"></script>
+    <script src="netbattalionJS.min.js"></script>
 </body>
 </html>
