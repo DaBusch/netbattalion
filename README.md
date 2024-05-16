@@ -13,7 +13,7 @@ https://www.netbattalion.de
 
 A minimalistic Javascript reactivity framework to put javascript code into your HTML-dom attributes. Inspired by AlpineJS and HTMX. This may be the tinyest Javascript framework out there.
  
-Just 308 Bytes!!! (This README is much bigger)
+Just 284 Bytes!!! (This README is much bigger)
 
 <h3><a href="https://github.com/DaBusch/netbattalion/tree/main/netbatQuery">netbatQuery</a></h3>
 
