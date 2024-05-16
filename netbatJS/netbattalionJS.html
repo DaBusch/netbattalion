@@ -62,13 +62,12 @@
             <button data-bind="toggle,false"
                 onclick="
                     ref.toggle = !ref.toggle
-                    ref.toggle ? ref.background = 'gray' : ref.background = '#fff'
-                    console.log(typeof(ref.toggle))"
+                    ref.toggle ? ref.background = 'gray' : ref.background = '#fff'"
             >Toggle Backgroundcolor
             </button>
-            <input type="text" placeholder="Product Description Search" data-bind="search,null"
+            <input type="text" placeholder="Product Description Search" data-bind="search,'All Products'"
                 oninput="
-                    ref.search = this.value.toLowerCase() || null
+                    ref.search = this.value.toLowerCase() || 'All Products'
                     ref.products=ref.products"
                 data-set=""
             >
@@ -82,7 +81,7 @@
         <div>
             <p>You are searching for: 
                 <b data-bind="search"
-                    data-set="null != ref.search ? me.innerHTML = ref.search : null"
+                    data-set="'All Products' != ref.search ? me.innerHTML = '&quot;' +  ref.search + '&quot;' : me.innerHTML = ref.search"
                 >All products</b>
             </p>
             <p>and Price less than: 
@@ -105,7 +104,7 @@
                 products ='<h3>List of Products</h3>'
                     for (let i of ref.products ){
                         let r = ref.products.indexOf(i)
-                        if ( (i.description.toLowerCase().includes(ref.search) && i.price<ref.price) || ('null'==ref.search && i.price<ref.price) ){
+                        if ( (i.description.toLowerCase().includes(ref.search) && i.price<ref.price) || ('All Products'==ref.search && i.price<ref.price) ){
                             found++
                             products += `
                             <div class='card'>
@@ -120,10 +119,9 @@
                     }
                 }
                 me.innerHTML = products
-                console.log(typeof(ref.search),ref.search)
                 ref.found = found">
         </div>
     </div>
-    <script src="netbattalionJS.min.js"></script>
+    <script src="netbattalionJS.js"></script>
 </body>
 </html>
