@@ -16,19 +16,28 @@
     </style>
     <script>
         MyOwnObject = {
-            myFetch: ( e, id ) => {
-                    var html =''; fetch('https://dummyjson.com/products').then(res => res.json())
-                    .then(json => (json.products.length = 30, ref.products = json.products))
+            myFetch: async ( e, id ) => {
+                    let html ='',
+                        res = await fetch('https://dummyjson.com/products'),
+                        json = await res.json()
+                    json.products.length = 30
+                    ref.products = json.products
                 },
-                setShop: (v)=>ref.some.push(v)
+            setCounter(me){
+                me.innerHTML='Counter is ' + ref.counter 
+            }
         }
     </script>
 </head>
 <body onload="MyOwnObject.myFetch()" data-bind="toggle"
     data-set="
         ref.toggle ? me.style.background = 'lightgray' : me.style.background = '#fff'"
-        >    
-    <div id="store" data-bind="background,'#fff'"
+        >
+
+    <button onclick="ref.counter = ref.counter + 1">Basic Counter Example</button>
+    <h3 data-bind="counter = 0" data-set="MyOwnObject.setCounter(me)">Counter</h3>
+
+    <div id="store" data-bind="background = '#fff'"
         data-set="me.style.background=ref.background"
     >
         <h1 id="title">My Store</h1>
@@ -36,7 +45,7 @@
         <div id="basket">            
             <h3>Your Purchase</h3>
             <p>You have 
-                <b data-bind="some,[]"
+                <b data-bind="some = []"
                     data-set="
                         me.innerHTML = ref.some.length"
                 >0</b> products in your basket.
@@ -59,19 +68,19 @@
         </div>
 
         <div>
-            <button data-bind="toggle,false"
+            <button data-bind="toggle = false"
                 onclick="
                     ref.toggle = !ref.toggle
                     ref.toggle ? ref.background = 'gray' : ref.background = '#fff'"
             >Toggle Backgroundcolor
             </button>
-            <input type="text" placeholder="Product Description Search" data-bind="search,'All Products'"
+            <input type="text" placeholder="Product Description Search" data-bind="search = 'All Products'"
                 oninput="
                     ref.search = this.value.toLowerCase() || 'All Products'
                     ref.products=ref.products"
                 data-set=""
             >
-            <input type="number" placeholder="Search by Price (Max Price)" data-bind="price,100000"
+            <input type="number" placeholder="Search by Price (Max Price)" data-bind="price = 100000"
                 oninput="ref.price = Number(this.value) || 100000
                 ref.products=ref.products"
                 data-set=""
@@ -81,17 +90,17 @@
         <div>
             <p>You are searching for: 
                 <b data-bind="search"
-                    data-set="'All Products' != ref.search ? me.innerHTML = '&quot;' +  ref.search + '&quot;' : me.innerHTML = ref.search"
+                    data-set="let r = ref.search; me.innerHTML = 'All Products' != r ?'&quot;' +  r + '&quot;' : r"
                 >All products</b>
             </p>
             <p>and Price less than: 
                 <b data-bind="price"
-                    data-set="100000 != ref.price ? me.innerHTML = ref.price : null"
+                    data-set="let p = ref.price; me.innerHTML = 100000 != p ?  p : 'No Limit'"
                 >No limit</b>
             </p>
             <p>Products found: 
-                <b data-bind="found,0"
-                    data-set="me.innerHTML=ref.found"
+                <b data-bind="found = 0"
+                    data-set="me.innerHTML = ref.found"
                 >All</b>
             </p>
         </div>
@@ -122,6 +131,6 @@
                 ref.found = found">
         </div>
     </div>
-    <script src="netbattalionJS.js"></script>
+    <script src="netbattalionJS.min.js"></script>
 </body>
 </html>
