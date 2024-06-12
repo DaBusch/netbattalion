@@ -3,7 +3,7 @@
     for( i of document .querySelectorAll( "[data-bind]" ) ) {
         let d = i .dataset,
 // ---- Variables ----------------------------------------
-        b = d .bind .split("="),
+        b = d .bind .split( "=" ),
         y = b[ 0 ] .trim()
         b[ 1 ] && ( r[ y ] = eval( b[ 1 ] ) )
 
