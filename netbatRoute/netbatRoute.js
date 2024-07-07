@@ -1,5 +1,3 @@
-// TO DO
-// Funktion statt Objekt in Konstruktor
 function Route( cfg, dat, tpl, tle ) {
     let q = ( v ) => document.querySelector( v )
     , hst = history
